@@ -51,4 +51,5 @@ step 3 : integrate into the 3D tracking framework
 
 The trained defocus estimation and virtual refocusing models can be integrated into your autofocusing system as shown below.
 
+![image](pic/framework.png)
 
