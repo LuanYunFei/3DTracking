@@ -1,12 +1,21 @@
 import csv
 import os.path
 
+import matplotlib
+
+matplotlib.use('Agg')
+
+from matplotlib import pyplot as plt
+
+plt.switch_backend('agg')
+
+
 class CsvLogger:
     def __init__(self, filepath='./', filename='results.csv', data=None):
         self.log_path = filepath
         self.log_name = filename
         self.csv_path = os.path.join(self.log_path, self.log_name)
-        self.fieldsnames = ['epoch', 'val_loss','train_loss','kl_loss','order_loss','rank_loss']
+        self.fieldsnames = ['epoch', 'val_loss','train_loss', 'ssim_loss','mse_loss']
 
         with open(self.csv_path, 'w') as f:
             writer = csv.DictWriter(f, fieldnames=self.fieldsnames)

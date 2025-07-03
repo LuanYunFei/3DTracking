@@ -1,0 +1,2 @@
+train.py --dataroot ../../defocusEstimation/datas/neuro_sharp_patch64_color --pre-trained ../../defocus-estimation-deblur-net/pre_train/model_best_epoch39.pth.tar --results-dir ./result --save exp1 --class_num 41
+Namespace(batch_size=128, class_num=41, dataroot='../../defocusEstimation/datas/neuro_sharp_patch64_color', decay=5e-05, epochs=150, gpus='0', learning_rate=5e-05, log_interval=100, momentum=0.9, pre_trained='../../defocus-estimation-deblur-net/pre_train/model_best_epoch39.pth.tar', results_dir='./result', save='exp1', seed=8394, type='float32', w1=0.1, workers=4)

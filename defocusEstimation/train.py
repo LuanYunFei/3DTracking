@@ -24,7 +24,7 @@ parser.add_argument('-j', '--workers', default=4, type=int, help='Number of data
 
 # =============================for data=====================================================
 parser.add_argument('--dataroot',  required=True, help='Path to train and val folders')
-parser.add_argument('--class_num',  default=41, help='The number of defocus levels')
+parser.add_argument('--class_num',  default=41, type=int, help='The number of defocus levels')
 parser.add_argument('--type', default='float32', help='Type of tensor: float32, float16, float64.')
 
 # ============================for training==================================================
@@ -43,7 +43,7 @@ parser.add_argument('--results_dir', default='./results', help='Directory to sto
 parser.add_argument('--save', '-s', default='', type=str, help='Folder to save checkpoints.')
 parser.add_argument('--resume', default='', type=str, help='path to latest checkpoint')
 parser.add_argument('--scaling', type=float, default=1, help='Scaling of MobileNet.')
-parser.add_argument('--input-size', type=int, default=32, help='Input size of MobileNet, multiple of 32.')
+parser.add_argument('--input-size', type=int, default=64, help='Input size, multiple of 64.')
 
 # ============================for loss weight=================================================
 parser.add_argument('--k1', type=float, default=1, help='BLO weight')

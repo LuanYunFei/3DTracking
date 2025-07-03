@@ -22,11 +22,11 @@ parser.add_argument('--type', default='float32', help='Type of tensor: float32, 
 # =======================================for model==========================================
 parser.add_argument('--resume', required=True, type=str, help='Path to checkpoint')
 parser.add_argument('--scaling', type=float, default=1, help='Scaling of MobileNet.')
-parser.add_argument('--input-size', type=int, default=32, help='Input size of MobileNet, multiple of 32.')
+parser.add_argument('--input-size', type=int, default=64, help='Input size, multiple of 64.')
 def main():
     args = parser.parse_args()
 
-    # ===========================training device===================================================
+    # =========================== device======================================================
     if args.gpus is not None:
         args.gpus = [int(i) for i in args.gpus.split(',')]
         device = 'cuda:' + str(args.gpus[0])

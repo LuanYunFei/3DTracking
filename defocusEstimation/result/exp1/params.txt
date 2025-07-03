@@ -1,0 +1,2 @@
+train.py --dataroot ../../defocusEstimation/datas/neuro_sharp_patch64_color --class_num 41 --results_dir ./result --save exp1
+Namespace(alpha=20, batch_size=128, class_num=41, dataroot='../../defocusEstimation/datas/neuro_sharp_patch64_color', decay=0.0005, epochs=150, gamma=0.1, gpus='0', input_size=64, k1=1, k2=0.1, learning_rate=0.0005, log_interval=100, momentum=0.9, results_dir='./result', resume='', save='exp1', scaling=1, schedule=[75, 110], seed=1577, type='float32', workers=4)

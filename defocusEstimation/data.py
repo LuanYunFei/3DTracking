@@ -1,5 +1,6 @@
 import os
 import glob
+import cv2
 from PIL import Image
 import torch
 import torch.nn.parallel
@@ -20,14 +21,17 @@ class my_loader(Dataset):
     def __getitem__(self, index):
         image_path = self.imgs_path[index]
         # to gray, since color is irrelevant to defocus estimation
-        image = Image.open(image_path).convert("L").convert("RGB")
+        image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE) / 255
+        image = Image.fromarray(image).convert('RGB')
+        size = image.size[0]
+        resize = size // 2
 
         if self.augment == True :
-            transform_list = inception_preproccess()
+            transform_list = inception_preproccess(resize)
             image = transform_list(image)
 
         else :
-            transform_list = scale_crop()
+            transform_list = scale_crop(resize)
             image = transform_list(image)
 
         # normalize the label to [0,1]
@@ -39,23 +43,19 @@ class my_loader(Dataset):
         return len(self.imgs_path)
 
 
-def inception_preproccess(normalize=__imagenet_stats):
+def inception_preproccess(size):
 
     return transforms.Compose([
-        transforms.RandomRotation(90, expand=False),
-        transforms.CenterCrop(40),
-        transforms.RandomCrop(32),
+        transforms.RandomCrop(size),
         transforms.RandomHorizontalFlip(),
         transforms.RandomVerticalFlip(),
         transforms.ToTensor(),
-        transforms.Normalize(**normalize),
     ])
 
-def scale_crop(normalize=__imagenet_stats):
+def scale_crop(size):
     t_list = [
-        transforms.CenterCrop(32),
+        transforms.CenterCrop(size),
         transforms.ToTensor(),
-        transforms.Normalize(**normalize),
     ]
     return transforms.Compose(t_list)
 
