@@ -53,3 +53,6 @@ The trained defocus estimation and virtual refocusing models can be integrated i
 
 ![image](pic/framework.png)
 
+**4 Reference**
+
+Part of the code is from [Mobilenet-V2](https://github.com/Randl/MobileNetV2-pytorch) and [Unet](https://gitee.com/song-laogou/unet_42).
