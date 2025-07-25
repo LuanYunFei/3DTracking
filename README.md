@@ -1,5 +1,5 @@
 # 3D Tracking Framework
-[TMECH2025] This is the official repository of "Autofocusing with Three-Dimensional Tracking for Robot-Assisted Microsurgery"
+[TMECH2025] This is the official repository of "Autofocusing with Three-Dimensional Tracking for Robot-Assisted Microsurgery" ([paper link](https://ieeexplore.ieee.org/document/11091590))
 
 **1 Environment Setup**
 
