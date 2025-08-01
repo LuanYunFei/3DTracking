@@ -1,6 +1,5 @@
 import os
 import glob
-import cv2
 from PIL import Image
 import torch
 import torch.nn.parallel
@@ -8,9 +7,6 @@ import torch.optim
 import torch.utils.data
 from torchvision import transforms
 from torch.utils.data import Dataset
-
-__imagenet_stats = {'mean': [0.485, 0.456, 0.406],
-                    'std': [0.229, 0.224, 0.225]}
 
 class my_loader(Dataset):
     def __init__(self, data_path, class_num, augment=True):
@@ -21,8 +17,7 @@ class my_loader(Dataset):
     def __getitem__(self, index):
         image_path = self.imgs_path[index]
         # to gray, since color is irrelevant to defocus estimation
-        image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE) / 255
-        image = Image.fromarray(image).convert('RGB')
+        image = Image.open(image_path).convert("L").convert("RGB")
         size = image.size[0]
         resize = size // 2
 
